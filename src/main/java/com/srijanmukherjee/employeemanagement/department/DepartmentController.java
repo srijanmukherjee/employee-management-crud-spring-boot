@@ -40,7 +40,7 @@ public class DepartmentController {
     }
 
     @PostMapping("/departments/{id}/add/{empId}")
-    public Employee addEmployeeToDepartment(@PathVariable UUID id, @PathVariable UUID empId) {
+    public Department addEmployeeToDepartment(@PathVariable UUID id, @PathVariable UUID empId) {
         return departmentService.addEmployeeToDepartment(id, empId);
     }
 }

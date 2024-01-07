@@ -32,8 +32,9 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(UUID id) {
+    public Employee(UUID id, Department department) {
         this.id = id;
+        this.department = department;
     }
 
     public UUID getId() {

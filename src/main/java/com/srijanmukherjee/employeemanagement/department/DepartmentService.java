@@ -2,12 +2,8 @@ package com.srijanmukherjee.employeemanagement.department;
 
 import com.srijanmukherjee.employeemanagement.department.exception.DepartmentNotFoundException;
 import com.srijanmukherjee.employeemanagement.employee.Employee;
-import com.srijanmukherjee.employeemanagement.employee.EmployeeRepository;
-import com.srijanmukherjee.employeemanagement.employee.exception.EmployeeNotFoundException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import com.srijanmukherjee.employeemanagement.employee.EmployeeService;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.function.EntityResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +12,11 @@ import java.util.UUID;
 @Service
 public class DepartmentService {
     private final DepartmentRepository departmentRepository;
-    private final EmployeeRepository employeeRepository;
+    private final EmployeeService employeeService;
 
-    public DepartmentService(DepartmentRepository departmentRepository, EmployeeRepository employeeRepository) {
+    public DepartmentService(DepartmentRepository departmentRepository, EmployeeService employeeService) {
         this.departmentRepository = departmentRepository;
-        this.employeeRepository = employeeRepository;
+        this.employeeService = employeeService;
     }
 
     public List<Department> getAllDepartments() {
@@ -48,10 +44,12 @@ public class DepartmentService {
         departmentRepository.deleteById(id);
     }
 
-    public Employee addEmployeeToDepartment(UUID id, UUID empId) {
-        Employee emp = employeeRepository.findById(empId).orElseThrow(EmployeeNotFoundException::new);
+    public Department addEmployeeToDepartment(UUID id, UUID empId) {
+        Employee emp = employeeService.getEmployee(empId);
         Department dept = departmentRepository.findById(id).orElseThrow(DepartmentNotFoundException::new);
         emp.setDepartment(dept);
-        return employeeRepository.save(emp);
+        dept.getEmployees().add(emp);
+        // This updates employee table, because it's the owning side containing the foreign key
+        return departmentRepository.save(dept);
     }
 }

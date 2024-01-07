@@ -17,7 +17,7 @@ public class Department {
     private UUID id;
     @Column(nullable = false, unique = true)
     private String name;
-    @OneToMany(mappedBy = "department", targetEntity = Employee.class, cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "department", targetEntity = Employee.class, cascade = CascadeType.DETACH)
     @JsonIgnoreProperties("department")
     private Set<Employee> employees = new HashSet<>();
 
