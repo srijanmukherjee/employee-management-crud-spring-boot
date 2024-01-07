@@ -1,27 +1,39 @@
 package com.srijanmukherjee.employeemanagement.employee;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.srijanmukherjee.employeemanagement.department.Department;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
+@Table(name = "employee")
 public class Employee {
     @Id
     @GeneratedValue
     private UUID id;
+    @Column(nullable = false)
     private String firstName;
+    @Column(nullable = false)
     private String lastName;
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
     private String phoneNumber;
     private String address;
-
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private LocalDate dateOfJoin;
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    @JsonIgnoreProperties("employees")
+    private Department department;
 
     public Employee() {
+    }
+
+    public Employee(UUID id) {
+        this.id = id;
     }
 
     public UUID getId() {
@@ -78,5 +90,13 @@ public class Employee {
 
     public void setDateOfJoin(LocalDate dateOfJoin) {
         this.dateOfJoin = dateOfJoin;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 }
