@@ -1,8 +1,9 @@
-package com.srijanmukherjee.employeemanagement.department;
+package com.srijanmukherjee.employeemanagement.service;
 
-import com.srijanmukherjee.employeemanagement.department.exception.DepartmentNotFoundException;
-import com.srijanmukherjee.employeemanagement.employee.Employee;
-import com.srijanmukherjee.employeemanagement.employee.EmployeeService;
+import com.srijanmukherjee.employeemanagement.repository.DepartmentRepository;
+import com.srijanmukherjee.employeemanagement.exception.DepartmentNotFoundException;
+import com.srijanmukherjee.employeemanagement.entity.Employee;
+import com.srijanmukherjee.employeemanagement.entity.Department;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

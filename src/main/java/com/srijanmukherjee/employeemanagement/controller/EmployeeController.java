@@ -1,5 +1,7 @@
-package com.srijanmukherjee.employeemanagement.employee;
+package com.srijanmukherjee.employeemanagement.controller;
 
+import com.srijanmukherjee.employeemanagement.service.EmployeeService;
+import com.srijanmukherjee.employeemanagement.entity.Employee;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

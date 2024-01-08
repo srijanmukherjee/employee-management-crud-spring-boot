@@ -1,6 +1,7 @@
-package com.srijanmukherjee.employeemanagement.department;
+package com.srijanmukherjee.employeemanagement.controller;
 
-import com.srijanmukherjee.employeemanagement.employee.Employee;
+import com.srijanmukherjee.employeemanagement.service.DepartmentService;
+import com.srijanmukherjee.employeemanagement.entity.Department;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

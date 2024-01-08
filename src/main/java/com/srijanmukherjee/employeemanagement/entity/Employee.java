@@ -1,8 +1,7 @@
-package com.srijanmukherjee.employeemanagement.employee;
+package com.srijanmukherjee.employeemanagement.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.srijanmukherjee.employeemanagement.department.Department;
+import com.srijanmukherjee.employeemanagement.entity.Department;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -26,7 +25,7 @@ public class Employee {
     private LocalDate dateOfJoin;
     @ManyToOne
     @JoinColumn(name = "department_id")
-    @JsonIgnoreProperties("employees")
+//    @JsonIgnoreProperties("employees")
     private Department department;
 
     public Employee() {

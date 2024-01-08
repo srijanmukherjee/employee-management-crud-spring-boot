@@ -1,8 +1,7 @@
-package com.srijanmukherjee.employeemanagement.department;
+package com.srijanmukherjee.employeemanagement.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.srijanmukherjee.employeemanagement.employee.Employee;
 import jakarta.persistence.*;
 
 import java.util.HashSet;

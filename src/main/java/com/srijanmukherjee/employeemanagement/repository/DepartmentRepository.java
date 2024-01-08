@@ -1,5 +1,6 @@
-package com.srijanmukherjee.employeemanagement.department;
+package com.srijanmukherjee.employeemanagement.repository;
 
+import com.srijanmukherjee.employeemanagement.entity.Department;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.UUID;
